@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    
+    <!-- favicon link -->
     <link rel="icon" href="assets/favicon/poke-ball.png" type="image/x-icon">
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>pokedex</h1>
-    <p>welcome to pokedex</p>
+    <header>
+    <h1 id="pokehead">Pokédex</h1>
+
+    <!-- Input for searching Pokémon by name or ID -->
+    <input type="text" id="searchInput" placeholder="Search Pokémon by name..." />
+
+    <!-- Optional reset button to go back to full list -->
+    <button onclick="loadPokemonList()">Reset List</button>
+  </header>
 </body>
 </html>

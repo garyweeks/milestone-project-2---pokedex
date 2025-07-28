@@ -1,0 +1,28 @@
+/* Reset all elements to use border-box sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+/* Header section styling */
+header {
+  background-color: #ef5350; /* Pokémon red */
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  }
+
+#pokehead {
+  font-family: "pokemon-solid", sans-serif;  
+}
