@@ -26,3 +26,13 @@ h1 {
 #pokehead {
   font-family: "pokemon-solid", sans-serif;  
 }
+
+/* Style for the search input */
+input {
+  padding: 10px;
+  margin-top: 10px;
+  width: 90%;
+  max-width: 300px;
+  border: none;
+  border-radius: 5px;
+}
