@@ -36,3 +36,26 @@ input {
   border: none;
   border-radius: 5px;
 }
+
+/* Main layout area */
+main {
+  padding: 20px;
+}
+
+/* Grid layout for Pokémon cards */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Responsive columns */
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card style for each Pokémon */
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
