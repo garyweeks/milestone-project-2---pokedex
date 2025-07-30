@@ -59,3 +59,12 @@ main {
   cursor: pointer;
   transition: transform 0.2s;
 }
+
+.card:hover {
+  transform: scale(1.05); /* Zoom on hover */
+}
+
+.card img {
+  width: 100px;
+  max-width: 100%;
+}
