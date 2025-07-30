@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "pokemonSolid";
+  src: url("/assets/css/pokemon-solid.ttf") format("truetype");
+}
+
 /* Reset all elements to use border-box sizing */
 * {
   box-sizing: border-box;
@@ -16,6 +21,7 @@ header {
   background-color: #ef5350; /* Pokémon red */
   color: white;
   padding: 20px;
+  height: 200px;
 }
 
 h1 {
@@ -24,7 +30,9 @@ h1 {
   }
 
 #pokehead {
-  font-family: "pokemon-solid", sans-serif;  
+  font-family: "pokemonSolid", sans-serif;
+  font-weight: 200;  
+  font-size: 50px;
 }
 
 /* Style for the search input */
