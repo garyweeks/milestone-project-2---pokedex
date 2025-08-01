@@ -60,3 +60,25 @@ async function loadPokemonList() {
     listContainer.appendChild(card);
   }
 }
+
+// Show full details of a Pokémon in a popup
+function showDetails(data) {
+  const popup = document.getElementById('popup');
+  const content = document.getElementById('popupContent');
+
+  // Fill popup with Pokémon details
+  content.innerHTML = `
+    <h2>${data.name.toUpperCase()} (#${data.id})</h2>
+    <img src="${data.sprites.front_default}" />
+    <p><strong>Types:</strong> ${data.types.map(t => t.type.name).join(', ')}</p>
+    <p><strong>Height:</strong> ${data.height / 10} m</p>
+    <p><strong>Weight:</strong> ${data.weight / 10} kg</p>
+    <p><strong>Base Stats:</strong></p>
+    <ul>
+      ${data.stats.map(s => `<li>${s.stat.name}: ${s.base_stat}</li>`).join('')}
+    </ul>
+  `;
+
+  // Show popup
+  popup.classList.remove('hidden');
+}
