@@ -113,3 +113,20 @@ button:hover {
   align-items: center;
   z-index: 999;
 }
+
+/* Popup box content style */
+.popup-content {
+  background: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 10px;
+  text-align: left;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* Hide elements by default */
+.hidden {
+  display: none;
+}
