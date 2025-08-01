@@ -1,6 +1,6 @@
 @font-face {
   font-family: "pokemonSolid";
-  src: url("/assets/css/pokemon-solid.ttf") format("truetype");
+  src: url("/assets/fonts/pokemon-solid.ttf") format("truetype");
 }
 
 /* Reset all elements to use border-box sizing */
@@ -31,7 +31,7 @@ h1 {
 #pokehead {
   font-family: "pokemonSolid", sans-serif;
   font-weight: 200;  
-  font-size: 50px;
+  font-size: 100px;
 }
 
 /* Style for the search input */
