@@ -1,6 +1,6 @@
 @font-face {
   font-family: "pokemonSolid";
-  src: url("/fonts/pokemon-solid.ttf") format("truetype");
+  src: url(fonts/pokemon-solid.ttf) format("truetype");
 }
 
 /* Reset all elements to use border-box sizing */
