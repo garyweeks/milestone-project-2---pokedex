@@ -1,6 +1,6 @@
 @font-face {
   font-family: "pokemonSolid";
-  src: url("/assets/fonts/pokemon-solid.ttf") format("truetype");
+  src: url("/fonts/pokemon-solid.ttf") format("truetype");
 }
 
 /* Reset all elements to use border-box sizing */
@@ -21,12 +21,12 @@ header {
   background-color: #ef5350; /* Pokémon red */
   color: white;
   padding: 20px;
- }
+}
 
 h1 {
   font-size: 2rem;
   margin-bottom: 10px;
-  }
+}
 
 /* Trainer image styling */
 .trainer-img {
@@ -35,12 +35,11 @@ h1 {
   width: 100px;
   height: auto;
   margin-top: 10px;
-  align: left;
 }
 
 #pokehead {
   font-family: "pokemonSolid", sans-serif;
-  font-weight: 200;  
+  font-weight: 200;
   font-size: 100px;
 }
 
@@ -62,7 +61,10 @@ main {
 /* Grid layout for Pokémon cards */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(160px, 1fr)
+  ); /* Responsive columns */
   gap: 20px;
   justify-content: center;
 }
@@ -72,7 +74,7 @@ main {
   background-color: white;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -115,8 +117,10 @@ button:hover {
 /* Popup overlay background */
 .popup {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -140,3 +144,4 @@ button:hover {
 .hidden {
   display: none;
 }
+

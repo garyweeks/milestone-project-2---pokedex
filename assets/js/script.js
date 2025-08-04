@@ -82,3 +82,8 @@ function showDetails(data) {
   // Show popup
   popup.classList.remove('hidden');
 }
+
+// Hide popup
+function closePopup() {
+  document.getElementById('popup').classList.add('hidden');
+}
