@@ -1,122 +1,88 @@
-// Number of Pokémon to show per page
+const pokemonList = document.getElementById('pokemonList');
+const searchInput = document.getElementById('searchInput');
+let currentPage = 1;
 const limit = 20;
-let offset = 0;
 
-// Run once DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-  loadPokemonList(); // Load first page
+// Load Pokémon list
+async function loadPokemonList() {
+  const offset = (currentPage - 1) * limit;
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+  const data = await res.json();
+  
+  pokemonList.innerHTML = '';
+  data.results.forEach(pokemon => {
+    fetchPokemonCard(pokemon.url);
+  });
+}
 
-  // Event: Next page button
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    offset += limit;
+// Fetch and create Pokémon card
+async function fetchPokemonCard(url) {
+  const res = await fetch(url);
+  const pokemon = await res.json();
+  
+  const card = document.createElement('div');
+  card.classList.add('pokemon-card');
+  card.innerHTML = `
+    <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+    <h3>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
+  `;
+  
+  card.addEventListener('click', () => showPopup(pokemon));
+  pokemonList.appendChild(card);
+}
+
+// Show popup with Pokémon details
+function showPopup(pokemon) {
+  const popup = document.getElementById('popup');
+  const popupContent = document.getElementById('popupContent');
+  
+  popupContent.innerHTML = `
+    <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+    <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+    <p>Height: ${pokemon.height}</p>
+    <p>Weight: ${pokemon.weight}</p>
+    <p>Type: ${pokemon.types.map(t => t.type.name).join(', ')}</p>
+  `;
+  
+  popup.classList.remove('hidden');
+}
+
+// Close popup
+function closePopup() {
+  document.getElementById('popup').classList.add('hidden');
+}
+
+// Pagination
+document.getElementById('prevBtn').addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
     loadPokemonList();
-  });
-
-  // Event: Previous page button
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    if (offset >= limit) {
-      offset -= limit;
-      loadPokemonList();
-    }
-  });
-
-  // Event: Search when Enter key is pressed
-  document
-    .getElementById("searchInput")
-    .addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        const value = e.target.value.toLowerCase().trim();
-        if (value) {
-          searchPokemon(value);
-        }
-      }
-    });
+  }
 });
 
-// Load a list of Pokémon from the API using pagination
-async function loadPokemonList() {
-  const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-  const res = await fetch(url);
-  const data = await res.json();
+document.getElementById('nextBtn').addEventListener('click', () => {
+  currentPage++;
+  loadPokemonList();
+});
 
-  const listContainer = document.getElementById("pokemonList");
-  listContainer.innerHTML = ""; // Clear previous results
-
-  // Loop through each Pokémon returned in the list
-  for (let item of data.results) {
-    const pokeData = await fetch(item.url).then((res) => res.json());
-
-    // Create a new card element
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <h3>${pokeData.name.toUpperCase()}</h3>
-      <img src="${pokeData.sprites.front_default}" alt="${pokeData.name}" />
-      <p>#${pokeData.id}</p>
-    `;
-
-    // On click, show more detailed popup
-    card.onclick = () => showDetails(pokeData);
-
-    // Add card to page
-    listContainer.appendChild(card);
+// Search
+searchInput.addEventListener('input', async () => {
+  const query = searchInput.value.toLowerCase();
+  if (!query) {
+    loadPokemonList();
+    return;
   }
-}
-
-// Search for any Pokémon by name or ID (e.g. "charizard" or "25")
-async function searchPokemon(query) {
-  const listContainer = document.getElementById("pokemonList");
-  listContainer.innerHTML = "<p>Loading...</p>"; // Show loading
 
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
-    if (!response.ok) throw new Error("Pokémon not found");
-
-    const data = await response.json();
-    listContainer.innerHTML = ""; // Clear current view
-    // Create single result card
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <h3>${data.name.toUpperCase()}</h3>
-      <img src="${data.sprites.front_default}" alt="${data.name}" />
-      <p>#${data.id}</p>
-    `;
-    card.onclick = () => showDetails(data);
-    listContainer.appendChild(card);
-  } catch (err) {
-    // If not found, show error message
-    listContainer.innerHTML = `<p style="color:red;">No Pokémon found. Try another name or ID.</p>`;
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+    if (!res.ok) throw new Error("Not found");
+    const pokemon = await res.json();
+    pokemonList.innerHTML = '';
+    fetchPokemonCard(`https://pokeapi.co/api/v2/pokemon/${query}`);
+  } catch {
+    pokemonList.innerHTML = '<p>No Pokémon found.</p>';
   }
-}
+});
 
-// Show full details of a Pokémon in a popup
-function showDetails(data) {
-  const popup = document.getElementById("popup");
-  const content = document.getElementById("popupContent");
-
-  // Fill popup with Pokémon details
-  content.innerHTML = `
-    <h2>${data.name.toUpperCase()} (#${data.id})</h2>
-    <img src="${data.sprites.front_default}" />
-    <p><strong>Types:</strong> ${data.types
-      .map((t) => t.type.name)
-      .join(", ")}</p>
-    <p><strong>Height:</strong> ${data.height / 10} m</p>
-    <p><strong>Weight:</strong> ${data.weight / 10} kg</p>
-    <p><strong>Base Stats:</strong></p>
-    <ul>
-      ${data.stats
-        .map((s) => `<li>${s.stat.name}: ${s.base_stat}</li>`)
-        .join("")}
-    </ul>
-  `;
-
-  // Show popup
-  popup.classList.remove("hidden");
-}
-
-// Hide popup
-function closePopup() {
-  document.getElementById("popup").classList.add("hidden");
-}
+// Initial load
+loadPokemonList();
