@@ -37,7 +37,7 @@ The website has been tested on Chrome, Firefox and Edge and performs in the same
 ![W3C HTML validation](/documentation/htmlvalidation.png)
 ![W3C css validation](/documentation/cssvalidation.png)
 ![Lighhouse scores mobile](/documentation/lighthousemobile.png)
-![Lighthouse scores desktop](/documentation/lighthousedesktop.png)
+![Lighthouse scores desktop](/documentation/lighthhousedesktop.png)
 
 ### ISSUES
 
@@ -49,6 +49,7 @@ There is an issue with the cards not aligning correctly when viewed on a larger 
 pokeapi.co
 chatgpt.com - to iron out issues that I couldn’t solve directly through research
 dafont.com
+
 
 
 
