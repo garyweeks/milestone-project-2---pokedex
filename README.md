@@ -7,6 +7,8 @@ Pokedex is a website designed to locate, search and bring up basic details about
 
 My thoughts were around the many people who play Pokemon Go on mobile phones and the official site having too many presses to access relevant data, at speed.
 
+![pokedex mockup](/documentation/mockup.png)
+
 ### UX
 
 I kept the UX very simple in order to make the search process easier. The colour scheme was designed round the Pokemon colour palette and although not perfect in terms of accessibility, fits the brand’s colour scheme to make the site look more familiar to people that would use it.
@@ -42,5 +44,6 @@ There is an issue with the cards not aligning correctly when viewed on a larger 
 pokeapi.co
 chatgpt.com - to iron out issues that I couldn’t solve directly through research
 dafont.com
+
 
 
