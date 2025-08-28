@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokedex</title>
-  
-  <!-- favicon -->
-  <link rel="icon" href="assets/favicon/poke-ball.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    
+    <!-- favicon link -->
+    <link rel="icon" href="assets/favicon/poke-ball.png" type="image/x-icon">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS link -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+    
   <header>
     <div class="header-content">
       <img src="assets/images/pikachu.png" alt="Pikachu" class="pikachu-icon">
@@ -20,15 +20,15 @@
         <h1 class="header-title">Pokedex</h1>
         <p class="header-subtitle">Search for your favorite Pokémon!</p>
       </div>
-      <img src="assets/images/pokemon-trainer.png" alt="Pokemon Trainer" class="pokemon-icon">
+      <img src="assets/images/pokemon-trainer.png" alt="pokemon trainer" class="pokemon-icon">
     </div>
 
-    <div class="search-bar">
+    <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search Pokémon by name...">
-      <button onclick="loadPokemonList()">Reset List</button>
+      <button id="resetBtn">Reset List</button>
     </div>
   </header>
-
+  
   <main>
     <div id="pokemonList" class="grid-container"></div>
 
@@ -43,7 +43,6 @@
     <button onclick="closePopup()" class="close-btn">Close</button>
   </div>
 
-  <!-- JS -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>
