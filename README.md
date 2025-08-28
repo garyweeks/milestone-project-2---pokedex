@@ -34,6 +34,11 @@ The website has been tested on Chrome, Firefox and Edge and performs in the same
 - tested reset button to make sure the search resets
 - tested page buttons to make sure the page scrolls
 
+![W3C HTML validation](/documentation/htmlvalidation.png)
+![W3C css validation](/documentation/cssvalidation.png)
+![Lighhouse scores mobile](/documentation/lighthousemobile.png)
+![Lighthouse scores desktop](/documentation/lighthousedesktop.png)
+
 ### ISSUES
 
 There are issues with the image dropping below the banner text on smaller devices.
@@ -44,6 +49,7 @@ There is an issue with the cards not aligning correctly when viewed on a larger 
 pokeapi.co
 chatgpt.com - to iron out issues that I couldn’t solve directly through research
 dafont.com
+
 
 
 
